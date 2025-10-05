@@ -1,0 +1,42 @@
+import React, { useState } from "react";
+
+export default function CandidateDelete5() {
+  const [candidates, setCandidates] = useState([
+    { id: 1, name: "Alice", email: "alice@example.com" },
+    { id: 2, name: "Bob", email: "bob@example.com" },
+    { id: 3, name: "Charlie", email: "charlie@example.com" },
+  ]);
+
+  const handleDelete = (id) => {
+    const updated = candidates.filter((c) => c.id !== id);
+    setCandidates(updated);
+  };
+
+  return (
+    <div>
+      <h2>Delete Candidate Example</h2>
+      <table border="1" cellPadding="10">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {candidates.map((c) => (
+            <tr key={c.id}>
+              <td>{c.id}</td>
+              <td>{c.name}</td>
+              <td>{c.email}</td>
+              <td>
+                <button onClick={() => handleDelete(c.id)}>Delete</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
